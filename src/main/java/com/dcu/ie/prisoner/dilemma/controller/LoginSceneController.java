@@ -24,6 +24,6 @@ public class LoginSceneController extends SceneController {
     private ComboBox prisoner1Type;
 
     public void initialSetUp(ActionEvent actionEvent) {
-        setGameScene((Integer) numOfPlayers.getValue(), (Integer) numOfRounds.getValue(), (Integer) prisoner1Type.getValue());
+        setGameScene((Integer) numOfPlayers.getValue(), (Integer) numOfRounds.getValue(), (String) prisoner1Type.getValue());
     }
 }

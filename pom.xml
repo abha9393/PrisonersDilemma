@@ -38,7 +38,7 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.dcu.ie.prisoner.dilemma.view.MainApplication</mainClass>
+                                    <mainClass>com.dcu.ie.prisoner.dilemma.view.Main</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

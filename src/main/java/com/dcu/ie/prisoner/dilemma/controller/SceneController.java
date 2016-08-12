@@ -6,7 +6,6 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
@@ -15,10 +14,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ResourceBundle;
 
 public abstract class SceneController {
     private static Logger logger = LogManager.getLogger(SceneController.class);
@@ -29,27 +26,34 @@ public abstract class SceneController {
         scenes.put(name, scene);
     }
 
-    public void loadScene(String name) {
-        try {
-            Parent scene = FXMLLoader.load(getClass().getClassLoader().getResource(name + ".fxml"));
-            addScene(name, scene);
-        } catch (IOException e) {
-            logger.error("Error occurred whilst loading scene\n" + e.getMessage());
-        }
+    public void loadScene(String name) throws IOException {
+        Parent scene = FXMLLoader.load(getClass().getClassLoader().getResource(name + ".fxml"));
+        addScene(name, scene);
+    }
+
+    private Parent loadGameScene(Integer numOfPlayers, Integer numOfRounds, String prisoner1Type) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("LaunchGame.fxml"));
+        loader.setController(new GameController(numOfPlayers, numOfRounds, prisoner1Type));
+
+        return loader.load();
     }
 
     public void removeScene(SceneName name) {
         scenes.remove(name);
     }
 
-    public void setGameScene(Integer numOfPlayersValue, Integer value, int numberOfPlayers) {
+    public void setGameScene(Integer numOfPlayers, Integer numOfRounds, String prisoner1Type) {
         final DoubleProperty opacity = sceneNode.opacityProperty();
 
         Timeline fade = new Timeline(
                 new KeyFrame(Duration.ZERO, new KeyValue(opacity, 1.0)),
                 new KeyFrame(new Duration(1000), t -> {
                     sceneNode.getChildren().remove(0);
-                    sceneNode.getChildren().add(0, new GameStackPane(numberOfPlayers));
+                    try {
+                        sceneNode.getChildren().add(0, loadGameScene(numOfPlayers, numOfRounds, prisoner1Type));
+                    } catch (IOException e) {
+                        logger.error(e.getMessage());
+                    }
                     Timeline fadeIn = new Timeline(
                             new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
                             new KeyFrame(new Duration(800), new KeyValue(opacity, 1.0)));

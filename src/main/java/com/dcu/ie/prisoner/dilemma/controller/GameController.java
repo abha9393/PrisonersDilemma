@@ -14,9 +14,12 @@ import javafx.scene.layout.GridPane;
  * @since 11-08-2016.
  */
 public class GameController {
-
     @FXML
     private GridPane prisoner1GridPane;
+
+    public GameController(Integer numOfPlayers, Integer numOfRounds, String prisoner1Type) {
+
+    }
 
     public void cooperate(ActionEvent actionEvent) {
 
