@@ -1,5 +1,6 @@
 package com.dcu.ie.prisoner.dilemma.controller;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -15,7 +16,7 @@ import javafx.scene.layout.GridPane;
 public class GameController {
 
     @FXML
-    private GridPane player1GridPane;
+    private GridPane prisoner1GridPane;
 
     public void cooperate(ActionEvent actionEvent) {
 
@@ -27,5 +28,9 @@ public class GameController {
 
     public void removeShadowEffect(MouseEvent mouseEvent) {
         ((Button)mouseEvent.getSource()).setEffect(null);
+    }
+
+    public void closeWindow(ActionEvent actionEvent) {
+        Platform.exit();
     }
 }

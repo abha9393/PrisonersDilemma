@@ -1,7 +1,6 @@
 package com.dcu.ie.prisoner.dilemma.view;
 
-import com.dcu.ie.prisoner.dilemma.SceneName;
-import com.dcu.ie.prisoner.dilemma.controller.SceneController;
+import com.dcu.ie.prisoner.dilemma.controller.LoginSceneController;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -10,20 +9,12 @@ import javafx.stage.Stage;
 public class MainApplication extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        SceneController sceneController = new SceneController();
-
-        sceneController.loadScene(SceneName.SetNumberOfPlayers.toString());
-        sceneController.loadScene(SceneName.LaunchGame.name());
-
-        sceneController.setScene(SceneName.SetNumberOfPlayers);
-
+    public void start(Stage primaryStage) throws Exception {
         Group root = new Group();
-        root.getChildren().addAll(sceneController.getSceneLayout());
+        root.getChildren().addAll(new LoginSceneController().getScene());
 
         primaryStage.setTitle("Prisoner's Dilemma");
         primaryStage.setScene(new Scene(root, 600, 575));
-        //primaryStage.setFullScreen(true);
         primaryStage.show();
     }
 

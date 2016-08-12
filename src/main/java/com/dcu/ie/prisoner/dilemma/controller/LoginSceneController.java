@@ -17,7 +17,13 @@ public class LoginSceneController extends SceneController {
     @FXML
     private ComboBox numOfPlayers;
 
-    public void setNumberOfPlayers(ActionEvent actionEvent) {
-        setGameScene((Integer) numOfPlayers.getValue());
+    @FXML
+    private ComboBox numOfRounds;
+
+    @FXML
+    private ComboBox prisoner1Type;
+
+    public void initialSetUp(ActionEvent actionEvent) {
+        setGameScene((Integer) numOfPlayers.getValue(), (Integer) numOfRounds.getValue(), (Integer) prisoner1Type.getValue());
     }
 }
