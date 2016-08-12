@@ -1,11 +1,11 @@
 package com.dcu.ie.prisoner.dilemma.controller;
 
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -16,6 +16,9 @@ import javafx.scene.layout.GridPane;
 public class GameController {
     @FXML
     private GridPane prisoner1GridPane;
+
+    @FXML
+    private BorderPane rootPane;
 
     public GameController(Integer numOfPlayers, Integer numOfRounds, String prisoner1Type) {
 
@@ -34,6 +37,6 @@ public class GameController {
     }
 
     public void closeWindow(ActionEvent actionEvent) {
-        Platform.exit();
+        System.exit(0);
     }
 }

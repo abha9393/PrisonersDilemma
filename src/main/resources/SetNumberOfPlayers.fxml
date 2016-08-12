@@ -14,66 +14,81 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dcu.ie.prisoner.dilemma.controller.LoginSceneController">
-   <center>
-      <GridPane alignment="center" hgap="10" styleClass="root" vgap="10">
-          <padding>
-              <Insets bottom="25" left="25" right="25" top="25" />
-          </padding>
-          <children>
-      
-              <Label text="Please choose the number of players:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-      
-              <ComboBox fx:id="numOfPlayers" prefWidth="100.0" promptText="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                  <items>
-                      <FXCollections fx:factory="observableArrayList">
-                          <Integer fx:value="2" />
-                      </FXCollections>
-                  </items>
-              </ComboBox>
-      
-              <Label text="Please choose the number of rounds:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-      
-              <ComboBox fx:id="numOfRounds" prefWidth="100.0" promptText="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                  <items>
-                      <FXCollections fx:factory="observableArrayList">
-                          <Integer fx:value="10" />
-                          <Integer fx:value="100" />
-                          <Integer fx:value="500" />
-                          <Integer fx:value="1000" />
-                      </FXCollections>
-                  </items>
-              </ComboBox>
-      
-              <Label text="Please choose if Prisoner 1 is human or computer:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
-      
-              <ComboBox fx:id="prisoner1Type" prefWidth="100.0" promptText="human" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                  <items>
-                      <FXCollections fx:factory="observableArrayList">
-                          <String fx:value="Human" />
-                          <String fx:value="Computer" />
-                      </FXCollections>
-                  </items>
-              </ComboBox>
-      
-              <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                  <Button onAction="#initialSetUp" text="Go" />
-              </HBox>
-          </children>
-         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-         </rowConstraints>
-      </GridPane>
-   </center>
-   <top>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="499.0" text="Initial Game Setup" BorderPane.alignment="CENTER" />
-   </top>
+<BorderPane xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.dcu.ie.prisoner.dilemma.controller.LoginSceneController">
+    <center>
+        <GridPane alignment="center" hgap="10" styleClass="root" vgap="10">
+            <padding>
+                <Insets bottom="25" left="25" right="25" top="25"/>
+            </padding>
+            <children>
+
+                <Label text="Please choose the number of players:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
+                <ComboBox fx:id="numOfPlayers" prefWidth="110.0" promptText="2" GridPane.columnIndex="1"
+                          GridPane.rowIndex="1">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <Integer fx:value="2"/>
+                        </FXCollections>
+                    </items>
+                    <value>
+                        <Integer fx:value="2"/>
+                    </value>
+                </ComboBox>
+
+                <Label text="Please choose the number of rounds:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+
+                <ComboBox fx:id="numOfRounds" prefWidth="110.0" promptText="10" GridPane.columnIndex="1"
+                          GridPane.rowIndex="2">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <Integer fx:value="10"/>
+                            <Integer fx:value="100"/>
+                            <Integer fx:value="500"/>
+                            <Integer fx:value="1000"/>
+                        </FXCollections>
+                    </items>
+                    <value>
+                        <Integer fx:value="10"/>
+                    </value>
+                </ComboBox>
+
+                <Label text="Please choose if Prisoner 1 is human or computer:" GridPane.columnIndex="0"
+                       GridPane.rowIndex="3"/>
+
+                <ComboBox fx:id="prisoner1Type" prefWidth="110.0" promptText="Human" GridPane.columnIndex="1"
+                          GridPane.rowIndex="3">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Human"/>
+                            <String fx:value="Computer"/>
+                        </FXCollections>
+                    </items>
+                    <value>
+                        <String fx:value="Human"/>
+                    </value>
+                </ComboBox>
+
+                <HBox alignment="bottom_right" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <Button onAction="#initialSetUp" text="Go"/>
+                </HBox>
+            </children>
+            <columnConstraints>
+                <ColumnConstraints/>
+                <ColumnConstraints/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+                <RowConstraints/>
+            </rowConstraints>
+        </GridPane>
+    </center>
+    <top>
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="499.0" text="Initial Game Setup"
+               BorderPane.alignment="CENTER"/>
+    </top>
 </BorderPane>
