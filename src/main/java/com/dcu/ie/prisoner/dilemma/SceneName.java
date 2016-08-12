@@ -1,4 +1,4 @@
-package com.dcu.ie.prisoner.dilemma.view;
+package com.dcu.ie.prisoner.dilemma;
 
 /**
  * @author Abha Aggarwal

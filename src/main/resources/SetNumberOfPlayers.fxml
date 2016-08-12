@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
 <?import java.lang.Integer?>
-<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.101" fx:controller="com.dcu.ie.prisoner.dilemma.view.SceneManager">
-    <columnConstraints>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints/>
-    </rowConstraints>
+<GridPane fx:controller="com.dcu.ie.prisoner.dilemma.controller.LoginSceneController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
+          styleClass="root">
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
     <children>
-        <Label text="Players"/>
-        <ComboBox prefWidth="150.0" promptText="2" GridPane.columnIndex="2">
+
+        <Label text="Please choose the number of players:"
+               GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+
+        <ComboBox fx:id="numOfPlayers" prefWidth="80.0" promptText="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <items>
                 <FXCollections fx:factory="observableArrayList">
                     <Integer fx:value="2"/>
@@ -33,5 +37,10 @@
                 </FXCollections>
             </items>
         </ComboBox>
+
+        <HBox spacing="10" alignment="bottom_right"
+              GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Button text="Go" onAction="#setNumberOfPlayers"/>
+        </HBox>
     </children>
 </GridPane>
