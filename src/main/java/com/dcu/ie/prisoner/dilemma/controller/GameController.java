@@ -39,4 +39,8 @@ public class GameController {
     public void closeWindow(ActionEvent actionEvent) {
         System.exit(0);
     }
+
+    public void switchPrisonerType(ActionEvent actionEvent) {
+
+    }
 }

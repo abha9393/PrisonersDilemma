@@ -30,7 +30,7 @@
             <children>
                 <MenuBar GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                     <menus>
-                  <Menu mnemonicParsing="false" text="Switch Prisoner 1" />
+                  <Menu mnemonicParsing="false" onAction="#switchPrisonerType" text="Switch Prisoner 1" />
                         <Menu mnemonicParsing="false" text="Reset" />
                         <Menu mnemonicParsing="false" text="Rounds">
                      <items>
