@@ -1,7 +1,8 @@
-package com.dcu.ie.prisoner.dilemma.model.prisoners;
+package com.dcu.ie.prisoner.dilemma.model.prisoners.naive;
 
 import com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove;
 import com.dcu.ie.prisoner.dilemma.model.MovesAuditLog;
+import com.dcu.ie.prisoner.dilemma.model.prisoners.Prisoner;
 
 import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.*;
 
@@ -10,18 +11,14 @@ import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.*;
  * @version 1.0
  * @since 17-08-2016.
  */
-public class UnforgivingPrisoner extends Prisoner {
-    private static boolean cooperate = true;
+public class ContinuousSwitchingPrisoner extends Prisoner {
 
-    public UnforgivingPrisoner(String name, MovesAuditLog auditLog) {
+    public ContinuousSwitchingPrisoner(String name, MovesAuditLog auditLog) {
         super(name, auditLog);
     }
 
     @Override
     protected IteratedPrisonerDilemmaMove calculateMove() {
-        if(auditLog.getLastMoveOfOpponent(this).equals(DEFECT)) {
-            cooperate = false;
-        }
-        return cooperate ? COOPERATE : DEFECT;
+        return currentMove.equals(COOPERATE)? DEFECT : COOPERATE;
     }
 }
