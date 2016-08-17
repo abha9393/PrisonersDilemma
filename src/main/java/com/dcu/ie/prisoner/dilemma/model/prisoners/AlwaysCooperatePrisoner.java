@@ -8,14 +8,14 @@ import com.dcu.ie.prisoner.dilemma.model.MovesAuditLog;
  * @version 1.0
  * @since 17-08-2016.
  */
-public class AlwaysDefect extends Prisoner {
+public class AlwaysCooperatePrisoner extends Prisoner {
 
-    public AlwaysDefect(String name, MovesAuditLog auditLog) {
+    public AlwaysCooperatePrisoner(String name, MovesAuditLog auditLog) {
         super(name, auditLog);
     }
 
     @Override
     protected IteratedPrisonerDilemmaMove calculateMove() {
-        return IteratedPrisonerDilemmaMove.DEFECT;
+        return IteratedPrisonerDilemmaMove.COOPERATE;
     }
 }

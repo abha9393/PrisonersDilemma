@@ -1,7 +1,7 @@
 package com.dcu.ie.prisoner.dilemma.model;
 
 import com.dcu.ie.prisoner.dilemma.model.prisoners.Prisoner;
-import com.dcu.ie.prisoner.dilemma.model.prisoners.TitForTatPrisoner;
+import com.dcu.ie.prisoner.dilemma.model.prisoners.TitForTat;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,8 +26,8 @@ public class MovesAuditLogTest {
     @Before
     public void setUp() {
         auditLog = new MovesAuditLog();
-        firstPrisoner = new TitForTatPrisoner("Charlie", auditLog);
-        secondPrisoner = new TitForTatPrisoner("Jack", auditLog);
+        firstPrisoner = new TitForTat("Charlie", auditLog);
+        secondPrisoner = new TitForTat("Jack", auditLog);
     }
 
     @After
