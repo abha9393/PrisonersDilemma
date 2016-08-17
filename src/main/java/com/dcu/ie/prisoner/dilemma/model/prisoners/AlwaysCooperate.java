@@ -1,0 +1,21 @@
+package com.dcu.ie.prisoner.dilemma.model.prisoners;
+
+import com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove;
+import com.dcu.ie.prisoner.dilemma.model.MovesAuditLog;
+
+/**
+ * @author Abha Aggarwal
+ * @version 1.0
+ * @since 17-08-2016.
+ */
+public class AlwaysCooperate extends Prisoner {
+
+    public AlwaysCooperate(String name, MovesAuditLog auditLog) {
+        super(name, auditLog);
+    }
+
+    @Override
+    protected IteratedPrisonerDilemmaMove calculateMove() {
+        return IteratedPrisonerDilemmaMove.COOPERATE;
+    }
+}
