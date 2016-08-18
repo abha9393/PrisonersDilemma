@@ -14,8 +14,8 @@ import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.*;
 public class OptimisticPrisoner extends Prisoner {
     private static final int COOPERATION_REWARD = 1;
     private static final int DEFECTION_PUNISHMENT = -1;
-    private static double score = 0.0;
-    private static int numberOfMoves = 0;
+    private double score = 0.0;
+    private int numberOfMoves = 0;
 
     public OptimisticPrisoner(String name, MovesAuditLog auditLog) {
         super(name, auditLog);

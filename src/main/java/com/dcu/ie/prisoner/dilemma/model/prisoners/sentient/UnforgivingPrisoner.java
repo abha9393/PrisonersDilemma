@@ -12,7 +12,7 @@ import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.*;
  * @since 17-08-2016.
  */
 public class UnforgivingPrisoner extends Prisoner {
-    private static boolean cooperate = true;
+    private boolean cooperate = true;
 
     public UnforgivingPrisoner(String name, MovesAuditLog auditLog) {
         super(name, auditLog);
