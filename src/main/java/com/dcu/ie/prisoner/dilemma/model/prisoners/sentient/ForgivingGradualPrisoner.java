@@ -1,7 +1,6 @@
 package com.dcu.ie.prisoner.dilemma.model.prisoners.sentient;
 
 import com.dcu.ie.prisoner.dilemma.model.MovesAuditLog;
-import com.dcu.ie.prisoner.dilemma.model.prisoners.naive.ForgivingSpitefulPrisoner;
 
 import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.COOPERATE;
 import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.DEFECT;

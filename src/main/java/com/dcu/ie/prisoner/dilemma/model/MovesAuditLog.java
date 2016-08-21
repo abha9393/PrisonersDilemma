@@ -27,4 +27,15 @@ public class MovesAuditLog {
     public IteratedPrisonerDilemmaMove getLastMoveOfOpponent(Prisoner prisoner) {
         return MovesAuditLog.historyOfMoves.stream().filter(record -> record.getLeft().isOpponent(prisoner)).reduce((a, b) -> b).orElse(new ImmutablePair<>(prisoner, IteratedPrisonerDilemmaMove.NOMOVE)).getRight();
     }
+
+    public List<ImmutablePair<Prisoner, IteratedPrisonerDilemmaMove>> getReverseMovesOfOpponent(Prisoner prisoner) {
+        List<ImmutablePair<Prisoner, IteratedPrisonerDilemmaMove>> reverseMoves = new ArrayList<>();
+        int i = historyOfMoves.size() - 1;
+        for (ImmutablePair<Prisoner, IteratedPrisonerDilemmaMove> move : historyOfMoves) {
+            if(!historyOfMoves.get(i).getLeft().equals(prisoner)) {
+                reverseMoves.add(historyOfMoves.get(i--));
+            }
+        }
+        return reverseMoves;
+    }
 }

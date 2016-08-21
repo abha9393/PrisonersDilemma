@@ -1,21 +1,17 @@
-package com.dcu.ie.prisoner.dilemma.model.prisoners.naive;
+package com.dcu.ie.prisoner.dilemma.model.prisoners.sentient;
 
 import com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove;
 import com.dcu.ie.prisoner.dilemma.model.MovesAuditLog;
-import com.dcu.ie.prisoner.dilemma.model.prisoners.Prisoner;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.*;
+import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.COOPERATE;
+import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.DEFECT;
 
 /**
  * @author Abha Aggarwal
  * @version 1.0
  * @since 17-08-2016.
  */
-public class ForgivingSpitefulPrisoner extends Prisoner {
-    protected List<IteratedPrisonerDilemmaMove> futureMoves = new ArrayList<>();
+public class ForgivingSpitefulPrisoner extends StrategicPrisoner {
     protected int numberOfDefections = 0;
 
     public ForgivingSpitefulPrisoner(String name, MovesAuditLog auditLog) {
@@ -38,6 +34,7 @@ public class ForgivingSpitefulPrisoner extends Prisoner {
     }
 
     protected void addSpitefulMoves() {
+        futureMoves.add(DEFECT);
         futureMoves.add(DEFECT);
         futureMoves.add(DEFECT);
         futureMoves.add(DEFECT);
