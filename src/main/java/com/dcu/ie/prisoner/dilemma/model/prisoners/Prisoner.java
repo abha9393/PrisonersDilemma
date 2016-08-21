@@ -11,7 +11,7 @@ import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonersDilemmaPoints.T
 
 /**
  * @author Abha Aggarwal
- * @version 1.0
+ * @version 2.0
  * @since 15-08-2016.
  */
 public abstract class Prisoner {

@@ -1,4 +1,4 @@
-package com.dcu.ie.prisoner.dilemma.model;
+package com.dcu.ie.prisoner.dilemma.model.game;
 
 import com.dcu.ie.prisoner.dilemma.model.prisoners.HumanPrisoner;
 import com.dcu.ie.prisoner.dilemma.model.prisoners.Prisoner;
@@ -27,18 +27,17 @@ public class IteratedPrisonersDilemmaGame {
     public void makeMoveAndScoreRound() {
         prisoners.forEach(prisoner -> prisoner.makeMove());
 
-        boolean atLeastOneDefect = checkIfThereIsAtLeastOneDefectMove();
+        long numberOfDefects = getNumberOfDefectedPrisoners();
+        boolean atLeastOneDefectedPrisoner = numberOfDefects > 0;
+        boolean allDefectedPrisoner = numberOfDefects == prisoners.size();
 
-        for (Prisoner prisoner : prisoners) {
-
-        }
+        prisoners.forEach(prisoner -> prisoner.scorePoints(atLeastOneDefectedPrisoner, allDefectedPrisoner));
     }
 
-    private boolean checkIfThereIsAtLeastOneDefectMove() {
+    private long getNumberOfDefectedPrisoners() {
          return prisoners.stream()
                 .map(prisoner -> prisoner.getCurrentMove())
                 .filter(move -> move.equals(DEFECT))
-                .count() > 0;
+                .count();
     }
-
 }
