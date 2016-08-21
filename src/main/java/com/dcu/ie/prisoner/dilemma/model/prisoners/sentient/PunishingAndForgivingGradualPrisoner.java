@@ -1,7 +1,7 @@
 package com.dcu.ie.prisoner.dilemma.model.prisoners.sentient;
 
-import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.COOPERATE;
-import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.DEFECT;
+import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonerDilemmaMove.COOPERATE;
+import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonerDilemmaMove.DEFECT;
 
 /**
  * @author Abha Aggarwal

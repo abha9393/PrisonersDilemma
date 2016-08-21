@@ -1,4 +1,4 @@
-package com.dcu.ie.prisoner.dilemma;
+package com.dcu.ie.prisoner.dilemma.model;
 
 import java.util.Arrays;
 import java.util.Collections;

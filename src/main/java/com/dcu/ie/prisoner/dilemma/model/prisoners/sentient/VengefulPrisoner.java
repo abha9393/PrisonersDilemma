@@ -1,14 +1,14 @@
 package com.dcu.ie.prisoner.dilemma.model.prisoners.sentient;
 
-import com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove;
+import com.dcu.ie.prisoner.dilemma.model.IteratedPrisonerDilemmaMove;
 import com.dcu.ie.prisoner.dilemma.model.MovesAuditLog;
 import com.dcu.ie.prisoner.dilemma.model.prisoners.Prisoner;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 
 import java.util.List;
 
-import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.COOPERATE;
-import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.DEFECT;
+import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonerDilemmaMove.COOPERATE;
+import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonerDilemmaMove.DEFECT;
 
 /**
  * @author Abha Aggarwal

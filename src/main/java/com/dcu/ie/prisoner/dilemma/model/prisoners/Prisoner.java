@@ -1,7 +1,13 @@
 package com.dcu.ie.prisoner.dilemma.model.prisoners;
 
-import com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove;
+import com.dcu.ie.prisoner.dilemma.model.IteratedPrisonerDilemmaMove;
+import com.dcu.ie.prisoner.dilemma.model.IteratedPrisonersDilemmaPoints;
 import com.dcu.ie.prisoner.dilemma.model.MovesAuditLog;
+
+import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonersDilemmaPoints.PUNISHMENT;
+import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonersDilemmaPoints.REWARD;
+import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonersDilemmaPoints.SUCKER_PAYOFF;
+import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonersDilemmaPoints.TEMPTATION;
 
 /**
  * @author Abha Aggarwal
@@ -11,13 +17,16 @@ import com.dcu.ie.prisoner.dilemma.model.MovesAuditLog;
 public abstract class Prisoner {
 
     protected String name;
-    protected String type;
+    private String type;
     protected IteratedPrisonerDilemmaMove currentMove;
-    protected int points;
+    private int points;
+    private int lengthOfSentenceInYears;
 
     public Prisoner(String name) {
         this.name = name;
         this.type = this.getClass().getSimpleName();
+        points = 0;
+        lengthOfSentenceInYears = 0;
     }
 
     public IteratedPrisonerDilemmaMove getCurrentMove() {
@@ -28,7 +37,19 @@ public abstract class Prisoner {
         return points;
     }
 
-    protected void makeCurrentMove(){
+    public String getName() {
+        return name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public int getLengthOfSentenceInYears() {
+        return lengthOfSentenceInYears;
+    }
+
+    public void makeMove() {
         currentMove = calculateMove();
         MovesAuditLog.addMoveToHistory(this, currentMove);
     }
@@ -41,5 +62,31 @@ public abstract class Prisoner {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void scorePoints(boolean atLeastOneDefected, boolean allDefected) {
+        switch (currentMove) {
+            case COOPERATE:
+                if (atLeastOneDefected) {
+                    setPoints(SUCKER_PAYOFF);
+                }
+                else {
+                    setPoints(REWARD);
+                }
+                break;
+            case DEFECT:
+                if (allDefected) {
+                    setPoints(PUNISHMENT);
+                }
+                else {
+                    setPoints(TEMPTATION);
+                }
+                break;
+        }
+    }
+
+    private void setPoints(IteratedPrisonersDilemmaPoints points) {
+        this.points += points.getPoints();
+        lengthOfSentenceInYears += points.getLengthOfSentenceInYears();
     }
 }

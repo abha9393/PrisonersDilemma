@@ -1,6 +1,6 @@
 package com.dcu.ie.prisoner.dilemma.model.prisoners.sentient;
 
-import com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove;
+import com.dcu.ie.prisoner.dilemma.model.IteratedPrisonerDilemmaMove;
 import com.dcu.ie.prisoner.dilemma.model.prisoners.Prisoner;
 
 import java.util.ArrayList;

@@ -1,6 +1,5 @@
 package com.dcu.ie.prisoner.dilemma.model;
 
-import com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove;
 import com.dcu.ie.prisoner.dilemma.model.prisoners.Prisoner;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 

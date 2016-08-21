@@ -9,9 +9,9 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.COOPERATE;
-import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.DEFECT;
-import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.NOMOVE;
+import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonerDilemmaMove.COOPERATE;
+import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonerDilemmaMove.DEFECT;
+import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonerDilemmaMove.NOMOVE;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
