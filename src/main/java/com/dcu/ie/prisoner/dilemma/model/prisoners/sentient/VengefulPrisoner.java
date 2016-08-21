@@ -14,13 +14,15 @@ import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.DEFECT;
  * @author Abha Aggarwal
  * @version 1.0
  * @since 18-08-2016.
+ *
+ * Vengeful when realises other strategy has spiralled into defects only. Otherwise, mimics last five moves.
  */
 public class VengefulPrisoner extends StrategicPrisoner {
 
     private boolean turnUnforgiving = false;
 
-    public VengefulPrisoner(String name, MovesAuditLog auditLog) {
-        super(name, auditLog);
+    public VengefulPrisoner(String name) {
+        super(name);
     }
 
     @Override
@@ -29,10 +31,10 @@ public class VengefulPrisoner extends StrategicPrisoner {
             return DEFECT;
         }
         else if (futureMoves.isEmpty()) {
-            if (auditLog.getLastMoveOfOpponent(this).equals(COOPERATE)) {
+            if (MovesAuditLog.getLastMoveOfOpponent(this).equals(COOPERATE)) {
                 return COOPERATE;
             } else {
-                List<ImmutablePair<Prisoner, IteratedPrisonerDilemmaMove>> reverseOpponentMoves = auditLog.getReverseMovesOfOpponent(this);
+                List<ImmutablePair<Prisoner, IteratedPrisonerDilemmaMove>> reverseOpponentMoves = MovesAuditLog.getReverseMovesOfOpponent(this);
                 if(reverseOpponentMoves.size() > 5) {
                     for (int i = 0; i < 6; i++) {
                         if(!reverseOpponentMoves.get(i).equals(DEFECT)) {

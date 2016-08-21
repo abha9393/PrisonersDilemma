@@ -10,30 +10,32 @@ import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.DEFECT;
  * @author Abha Aggarwal
  * @version 1.0
  * @since 17-08-2016.
+ *
+ * Punishes and then forgives.
  */
-public class ForgivingSpitefulPrisoner extends StrategicPrisoner {
+public class PunishingAndForgivingPrisoner extends StrategicPrisoner {
     protected int numberOfDefections = 0;
 
-    public ForgivingSpitefulPrisoner(String name, MovesAuditLog auditLog) {
-        super(name, auditLog);
+    public PunishingAndForgivingPrisoner(String name) {
+        super(name);
     }
 
     @Override
     protected IteratedPrisonerDilemmaMove calculateMove() {
         if (futureMoves.isEmpty()) {
-            if (auditLog.getLastMoveOfOpponent(this).equals(COOPERATE)) {
+            if (MovesAuditLog.getLastMoveOfOpponent(this).equals(COOPERATE)) {
                 return COOPERATE;
             }
             else {
                 numberOfDefections++;
-                addSpitefulMoves();
+                addPunishingMoves();
             }
         }
         currentMove = futureMoves.remove(0);
         return currentMove;
     }
 
-    protected void addSpitefulMoves() {
+    protected void addPunishingMoves() {
         futureMoves.add(DEFECT);
         futureMoves.add(DEFECT);
         futureMoves.add(DEFECT);

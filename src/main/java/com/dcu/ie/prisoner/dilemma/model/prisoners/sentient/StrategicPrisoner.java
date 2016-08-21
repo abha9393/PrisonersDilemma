@@ -1,7 +1,6 @@
 package com.dcu.ie.prisoner.dilemma.model.prisoners.sentient;
 
 import com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove;
-import com.dcu.ie.prisoner.dilemma.model.MovesAuditLog;
 import com.dcu.ie.prisoner.dilemma.model.prisoners.Prisoner;
 
 import java.util.ArrayList;
@@ -16,7 +15,7 @@ public abstract class StrategicPrisoner extends Prisoner {
 
     protected List<IteratedPrisonerDilemmaMove> futureMoves = new ArrayList<>();
 
-    public StrategicPrisoner(String name, MovesAuditLog auditLog) {
-        super(name, auditLog);
+    public StrategicPrisoner(String name) {
+        super(name);
     }
 }

@@ -1,10 +1,13 @@
 package com.dcu.ie.prisoner.dilemma.model;
 
 import com.dcu.ie.prisoner.dilemma.model.prisoners.Prisoner;
-import com.dcu.ie.prisoner.dilemma.model.prisoners.TitForTat;
+import com.dcu.ie.prisoner.dilemma.model.prisoners.naive.TitForTatPrisoner;
+import org.apache.commons.lang3.reflect.FieldUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.COOPERATE;
 import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.DEFECT;
@@ -18,35 +21,32 @@ import static org.hamcrest.Matchers.is;
  * @since 16-08-2016.
  */
 public class MovesAuditLogTest {
-    MovesAuditLog auditLog;
-
     Prisoner firstPrisoner;
     Prisoner secondPrisoner;
 
     @Before
     public void setUp() {
-        auditLog = new MovesAuditLog();
-        firstPrisoner = new TitForTat("Charlie", auditLog);
-        secondPrisoner = new TitForTat("Jack", auditLog);
+        firstPrisoner = new TitForTatPrisoner("Charlie");
+        secondPrisoner = new TitForTatPrisoner("Jack");
     }
 
     @After
     public void tearDown() {
-        auditLog = null;
         firstPrisoner = null;
         secondPrisoner = null;
     }
 
     @Test
-    public void checkAuditLog_withOneMovePresent() {
-        auditLog.addMoveToHistory(firstPrisoner, COOPERATE);
-        auditLog.addMoveToHistory(secondPrisoner, DEFECT);
-
-        assertThat(auditLog.getLastMoveOfOpponent(firstPrisoner), is(DEFECT));
+    public void checkAuditLog_withNoMovePresent() throws IllegalAccessException {
+        FieldUtils.writeStaticField(MovesAuditLog.class, "historyOfMoves", new ArrayList<>(), true);
+        assertThat(MovesAuditLog.getLastMoveOfOpponent(firstPrisoner), is(NOMOVE));
     }
 
     @Test
-    public void checkAuditLog_withNoMovePresent() {
-        assertThat(auditLog.getLastMoveOfOpponent(firstPrisoner), is(NOMOVE));
+    public void checkAuditLog_withOneMovePresent() {
+        MovesAuditLog.addMoveToHistory(firstPrisoner, COOPERATE);
+        MovesAuditLog.addMoveToHistory(secondPrisoner, DEFECT);
+
+        assertThat(MovesAuditLog.getLastMoveOfOpponent(firstPrisoner), is(DEFECT));
     }
 }

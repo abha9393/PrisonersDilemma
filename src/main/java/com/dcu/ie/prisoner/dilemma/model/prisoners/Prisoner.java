@@ -11,13 +11,13 @@ import com.dcu.ie.prisoner.dilemma.model.MovesAuditLog;
 public abstract class Prisoner {
 
     protected String name;
-    protected MovesAuditLog auditLog;
+    protected String type;
     protected IteratedPrisonerDilemmaMove currentMove;
     protected int points;
 
-    public Prisoner(String name, MovesAuditLog auditLog) {
+    public Prisoner(String name) {
         this.name = name;
-        this.auditLog = auditLog;
+        this.type = this.getClass().getSimpleName();
     }
 
     public IteratedPrisonerDilemmaMove getCurrentMove() {
@@ -30,12 +30,16 @@ public abstract class Prisoner {
 
     protected void makeCurrentMove(){
         currentMove = calculateMove();
-        auditLog.addMoveToHistory(this, currentMove);
+        MovesAuditLog.addMoveToHistory(this, currentMove);
     }
 
     protected abstract IteratedPrisonerDilemmaMove calculateMove();
 
     public boolean isOpponent(Prisoner prisoner) {
         return !prisoner.equals(this);
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

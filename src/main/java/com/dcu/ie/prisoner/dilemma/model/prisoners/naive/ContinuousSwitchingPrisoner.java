@@ -1,20 +1,22 @@
 package com.dcu.ie.prisoner.dilemma.model.prisoners.naive;
 
 import com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove;
-import com.dcu.ie.prisoner.dilemma.model.MovesAuditLog;
 import com.dcu.ie.prisoner.dilemma.model.prisoners.Prisoner;
 
-import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.*;
+import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.COOPERATE;
+import static com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove.DEFECT;
 
 /**
  * @author Abha Aggarwal
  * @version 1.0
  * @since 17-08-2016.
+ *
+ * Unstable decision maker.
  */
 public class ContinuousSwitchingPrisoner extends Prisoner {
 
-    public ContinuousSwitchingPrisoner(String name, MovesAuditLog auditLog) {
-        super(name, auditLog);
+    public ContinuousSwitchingPrisoner(String name) {
+        super(name);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.dcu.ie.prisoner.dilemma.model.prisoners;
 
 import com.dcu.ie.prisoner.dilemma.IteratedPrisonerDilemmaMove;
-import com.dcu.ie.prisoner.dilemma.model.MovesAuditLog;
 
 /**
  * @author Abha Aggarwal
@@ -10,8 +9,8 @@ import com.dcu.ie.prisoner.dilemma.model.MovesAuditLog;
  */
 public class HumanPrisoner extends Prisoner {
 
-    public HumanPrisoner(String name, MovesAuditLog auditLog) {
-        super(name, auditLog);
+    public HumanPrisoner(String name) {
+        super(name);
     }
 
     public void setHumanMove(IteratedPrisonerDilemmaMove move) {

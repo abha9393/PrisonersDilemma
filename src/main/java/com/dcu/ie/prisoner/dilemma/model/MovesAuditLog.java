@@ -16,19 +16,19 @@ public class MovesAuditLog {
 
     private static List<ImmutablePair<Prisoner, IteratedPrisonerDilemmaMove>> historyOfMoves = new ArrayList<>();
 
-    public List<ImmutablePair<Prisoner, IteratedPrisonerDilemmaMove>> getHistoryOfMoves() {
+    public static List<ImmutablePair<Prisoner, IteratedPrisonerDilemmaMove>> getHistoryOfMoves() {
         return historyOfMoves;
     }
 
-    public void addMoveToHistory(Prisoner prisoner, IteratedPrisonerDilemmaMove move) {
-        MovesAuditLog.historyOfMoves.add(new ImmutablePair<>(prisoner, move));
+    public static void addMoveToHistory(Prisoner prisoner, IteratedPrisonerDilemmaMove move) {
+        historyOfMoves.add(new ImmutablePair<>(prisoner, move));
     }
 
-    public IteratedPrisonerDilemmaMove getLastMoveOfOpponent(Prisoner prisoner) {
-        return MovesAuditLog.historyOfMoves.stream().filter(record -> record.getLeft().isOpponent(prisoner)).reduce((a, b) -> b).orElse(new ImmutablePair<>(prisoner, IteratedPrisonerDilemmaMove.NOMOVE)).getRight();
+    public static IteratedPrisonerDilemmaMove getLastMoveOfOpponent(Prisoner prisoner) {
+        return historyOfMoves.stream().filter(record -> record.getLeft().isOpponent(prisoner)).reduce((a, b) -> b).orElse(new ImmutablePair<>(prisoner, IteratedPrisonerDilemmaMove.NOMOVE)).getRight();
     }
 
-    public List<ImmutablePair<Prisoner, IteratedPrisonerDilemmaMove>> getReverseMovesOfOpponent(Prisoner prisoner) {
+    public static List<ImmutablePair<Prisoner, IteratedPrisonerDilemmaMove>> getReverseMovesOfOpponent(Prisoner prisoner) {
         List<ImmutablePair<Prisoner, IteratedPrisonerDilemmaMove>> reverseMoves = new ArrayList<>();
         int i = historyOfMoves.size() - 1;
         for (ImmutablePair<Prisoner, IteratedPrisonerDilemmaMove> move : historyOfMoves) {
