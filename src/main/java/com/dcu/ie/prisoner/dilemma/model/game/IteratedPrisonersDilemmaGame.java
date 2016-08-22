@@ -15,18 +15,32 @@ import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonerDilemmaMove.DEFE
  */
 public class IteratedPrisonersDilemmaGame {
     private List<Prisoner> prisoners;
+    protected int numberOfRounds;
+    private int currentRound;
 
-    public IteratedPrisonersDilemmaGame(int numberOfPrisoners, boolean isFirstPrisonerHuman) {
+    public IteratedPrisonersDilemmaGame(int numberOfPrisoners, boolean isFirstPrisonerHuman, int numberOfRounds) {
         prisoners = new ArrayList<>(numberOfPrisoners);
+        this.numberOfRounds = numberOfRounds;
+        currentRound = 0;
 
         if(isFirstPrisonerHuman) {
             prisoners.add(new HumanPrisoner("Human"));
         }
     }
 
-    public void makeMoveAndScoreRound() {
-        prisoners.forEach(prisoner -> prisoner.makeMove());
+    public void playRound() {
+        if(currentRound < numberOfRounds) {
+            makeAllPrisonersMoveInTheRound();
+            scorePointsForAllPrisonersInTheRound();
+            currentRound++;
+        }
+    }
 
+    protected void makeAllPrisonersMoveInTheRound() {
+        prisoners.forEach(prisoner -> prisoner.makeMove());
+    }
+
+    protected void scorePointsForAllPrisonersInTheRound() {
         long numberOfDefects = getNumberOfDefectedPrisoners();
         boolean atLeastOneDefectedPrisoner = numberOfDefects > 0;
         boolean allDefectedPrisoner = numberOfDefects == prisoners.size();

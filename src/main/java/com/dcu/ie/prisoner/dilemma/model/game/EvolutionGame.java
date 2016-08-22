@@ -7,7 +7,7 @@ package com.dcu.ie.prisoner.dilemma.model.game;
  */
 public class EvolutionGame extends SimulationGame {
 
-    public EvolutionGame(int numberOfPrisoners, boolean isFirstPrisonerHuman) {
-        super(numberOfPrisoners, isFirstPrisonerHuman);
+    public EvolutionGame(int numberOfPrisoners, int numberOfRounds) {
+        super(numberOfPrisoners, numberOfRounds);
     }
 }

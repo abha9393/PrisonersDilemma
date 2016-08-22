@@ -7,7 +7,13 @@ package com.dcu.ie.prisoner.dilemma.model.game;
  */
 public class SimulationGame extends IteratedPrisonersDilemmaGame {
 
-    public SimulationGame(int numberOfPrisoners, boolean isFirstPrisonerHuman) {
-        super(numberOfPrisoners, isFirstPrisonerHuman);
+    public SimulationGame(int numberOfPrisoners, int numberOfRounds) {
+        super(numberOfPrisoners, false, numberOfRounds);
+    }
+
+    public void playRounds() {
+        for (int i = 0; i < numberOfRounds; i++) {
+            playRound();
+        }
     }
 }
