@@ -1,13 +1,15 @@
 package com.dcu.ie.prisoner.dilemma.model.prisoners;
 
 import com.dcu.ie.prisoner.dilemma.model.IteratedPrisonerDilemmaMove;
-import com.dcu.ie.prisoner.dilemma.model.IteratedPrisonersDilemmaPoints;
+import com.dcu.ie.prisoner.dilemma.model.IteratedPrisonersDilemmaOutcome;
 import com.dcu.ie.prisoner.dilemma.model.MovesAuditLog;
 
-import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonersDilemmaPoints.PUNISHMENT;
-import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonersDilemmaPoints.REWARD;
-import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonersDilemmaPoints.SUCKER_PAYOFF;
-import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonersDilemmaPoints.TEMPTATION;
+import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonerDilemmaMove.NOMOVE;
+import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonersDilemmaOutcome.NIL;
+import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonersDilemmaOutcome.PUNISHMENT;
+import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonersDilemmaOutcome.REWARD;
+import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonersDilemmaOutcome.SUCKER_PAYOFF;
+import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonersDilemmaOutcome.TEMPTATION;
 
 /**
  * @author Abha Aggarwal
@@ -19,6 +21,7 @@ public abstract class Prisoner {
     protected String name;
     private String type;
     protected IteratedPrisonerDilemmaMove currentMove;
+    private IteratedPrisonersDilemmaOutcome currentOutcome;
     private int points;
     private int lengthOfSentenceInYears;
 
@@ -27,6 +30,12 @@ public abstract class Prisoner {
         this.type = this.getClass().getSimpleName();
         points = 0;
         lengthOfSentenceInYears = 0;
+        currentMove = NOMOVE;
+        currentOutcome = NIL;
+    }
+
+    public IteratedPrisonersDilemmaOutcome getCurrentOutcome() {
+        return currentOutcome;
     }
 
     public IteratedPrisonerDilemmaMove getCurrentMove() {
@@ -68,25 +77,26 @@ public abstract class Prisoner {
         switch (currentMove) {
             case COOPERATE:
                 if (atLeastOneDefected) {
-                    setPoints(SUCKER_PAYOFF);
+                    currentOutcome = SUCKER_PAYOFF;
                 }
                 else {
-                    setPoints(REWARD);
+                    currentOutcome = REWARD;
                 }
                 break;
             case DEFECT:
                 if (allDefected) {
-                    setPoints(PUNISHMENT);
+                    currentOutcome = PUNISHMENT;
                 }
                 else {
-                    setPoints(TEMPTATION);
+                    currentOutcome = TEMPTATION;
                 }
                 break;
         }
+        setPoints();
     }
 
-    private void setPoints(IteratedPrisonersDilemmaPoints points) {
-        this.points += points.getPoints();
-        lengthOfSentenceInYears += points.getLengthOfSentenceInYears();
+    private void setPoints() {
+        points += currentOutcome.getPoints();
+        lengthOfSentenceInYears += currentOutcome.getLengthOfSentenceInYears();
     }
 }

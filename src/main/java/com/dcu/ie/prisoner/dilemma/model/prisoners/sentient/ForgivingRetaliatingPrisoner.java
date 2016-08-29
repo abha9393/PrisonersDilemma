@@ -13,10 +13,10 @@ import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonerDilemmaMove.DEFE
  *
  * Punishes and then forgives.
  */
-public class PunishingAndForgivingPrisoner extends StrategicPrisoner {
+public class ForgivingRetaliatingPrisoner extends StrategicPrisoner {
     protected int numberOfDefections = 0;
 
-    public PunishingAndForgivingPrisoner(String name) {
+    public ForgivingRetaliatingPrisoner(String name) {
         super(name);
     }
 

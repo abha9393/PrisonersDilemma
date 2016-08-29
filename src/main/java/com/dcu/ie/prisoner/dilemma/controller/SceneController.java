@@ -32,10 +32,11 @@ public abstract class SceneController {
     }
 
     private Parent loadGameScene(Integer numOfPlayers, Integer numOfRounds, String prisoner1Type) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("LaunchGame.fxml"));
-        loader.setController(new GameController(numOfPlayers, numOfRounds, prisoner1Type));
+        //FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("LaunchGame.fxml"));
+        //loader.setController(new GameController(numOfPlayers, numOfRounds, prisoner1Type));
 
-        return loader.load();
+        //return loader.load();
+        return new GameController();
     }
 
     public void removeScene(SceneName name) {

@@ -10,9 +10,9 @@ import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonerDilemmaMove.DEFE
  *
  * Punishes increases with number of defects.
  */
-public class PunishingAndForgivingGradualPrisoner extends PunishingAndForgivingPrisoner {
+public class GradualRetaliatingPrisoner extends ForgivingRetaliatingPrisoner {
 
-    public PunishingAndForgivingGradualPrisoner(String name) {
+    public GradualRetaliatingPrisoner(String name) {
         super(name);
     }
 

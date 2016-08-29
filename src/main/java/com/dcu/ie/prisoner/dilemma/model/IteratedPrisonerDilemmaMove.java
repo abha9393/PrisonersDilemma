@@ -11,7 +11,17 @@ import java.util.Random;
  * @since 15-08-2016.
  */
 public enum IteratedPrisonerDilemmaMove {
-    COOPERATE, DEFECT, NOMOVE;
+    COOPERATE("C"), DEFECT("D"), NOMOVE("N");
+
+    private final String initial;
+
+    IteratedPrisonerDilemmaMove(String initial) {
+        this.initial = initial;
+    }
+
+    public String getInitial() {
+        return initial;
+    }
 
     private static final List<IteratedPrisonerDilemmaMove> MOVES = Collections.unmodifiableList(Arrays.asList(new IteratedPrisonerDilemmaMove[]{COOPERATE, DEFECT}));
     private static final int SIZE = MOVES.size();

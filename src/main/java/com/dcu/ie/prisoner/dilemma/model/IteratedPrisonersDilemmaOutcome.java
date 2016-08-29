@@ -5,13 +5,15 @@ package com.dcu.ie.prisoner.dilemma.model;
  * @version 1.0
  * @since 21-08-2016.
  */
-public enum IteratedPrisonersDilemmaPoints {
-    REWARD(1, 3), TEMPTATION(0, 5), PUNISHMENT(1, 2), SUCKER_PAYOFF(3, 0);
+public enum IteratedPrisonersDilemmaOutcome {
+    REWARD("R", 1, 3), TEMPTATION("T", 0, 5), PUNISHMENT("P", 1, 2), SUCKER_PAYOFF("S", 3, 0), NIL("N", -1, -1);
 
+    String initial;
     int lengthOfSentenceInYears;
     int points;
 
-    IteratedPrisonersDilemmaPoints(int years, int points) {
+    IteratedPrisonersDilemmaOutcome(String initial, int years, int points) {
+        this.initial = initial;
         lengthOfSentenceInYears = years;
         this.points = points;
     }

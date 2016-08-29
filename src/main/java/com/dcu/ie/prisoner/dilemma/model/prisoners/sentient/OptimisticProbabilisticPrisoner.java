@@ -13,13 +13,13 @@ import static com.dcu.ie.prisoner.dilemma.model.IteratedPrisonerDilemmaMove.*;
  *
  * Cooperates based on historic moves.
  */
-public class OptimisticPrisoner extends Prisoner {
+public class OptimisticProbabilisticPrisoner extends Prisoner {
     private static final int COOPERATION_REWARD = 1;
     private static final int DEFECTION_PUNISHMENT = -1;
     private double score = 0.0;
     private int numberOfMoves = 0;
 
-    public OptimisticPrisoner(String name) {
+    public OptimisticProbabilisticPrisoner(String name) {
         super(name);
     }
 

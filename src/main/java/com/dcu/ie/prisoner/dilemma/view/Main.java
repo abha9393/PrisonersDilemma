@@ -1,6 +1,7 @@
 package com.dcu.ie.prisoner.dilemma.view;
 
 import com.dcu.ie.prisoner.dilemma.SceneName;
+import com.dcu.ie.prisoner.dilemma.controller.GameController;
 import com.dcu.ie.prisoner.dilemma.controller.LoginSceneController;
 import com.dcu.ie.prisoner.dilemma.controller.SceneController;
 import javafx.application.Application;
@@ -20,7 +21,7 @@ public class Main extends Application {
         root.getChildren().addAll(sceneController.getScene());
 
         primaryStage.setTitle("Prisoner's Dilemma");
-        primaryStage.setScene(new Scene(root, 600, 575));
+        primaryStage.setScene(new Scene(new GameController(), 1000, 955));
         primaryStage.show();
     }
 

@@ -18,6 +18,12 @@ public class IteratedPrisonersDilemmaGame {
     protected int numberOfRounds;
     private int currentRound;
 
+    public IteratedPrisonersDilemmaGame(List<Prisoner> prisoners, int numberOfRounds) {
+        this.prisoners = prisoners;
+        this.numberOfRounds = numberOfRounds;
+        currentRound = 0;
+    }
+
     public IteratedPrisonersDilemmaGame(int numberOfPrisoners, boolean isFirstPrisonerHuman, int numberOfRounds) {
         prisoners = new ArrayList<>(numberOfPrisoners);
         this.numberOfRounds = numberOfRounds;
