@@ -22,14 +22,12 @@ public abstract class Prisoner {
     private String type;
     protected IteratedPrisonerDilemmaMove currentMove;
     private IteratedPrisonersDilemmaOutcome currentOutcome;
-    private int points;
-    private int lengthOfSentenceInYears;
+    private int averagePoints;
 
     public Prisoner(String name) {
         this.name = name;
         this.type = this.getClass().getSimpleName();
-        points = 0;
-        lengthOfSentenceInYears = 0;
+        averagePoints = 0;
         currentMove = NOMOVE;
         currentOutcome = NIL;
     }
@@ -42,8 +40,8 @@ public abstract class Prisoner {
         return currentMove;
     }
 
-    public int getPoints() {
-        return points;
+    public int getAveragePoints() {
+        return averagePoints;
     }
 
     public String getName() {
@@ -55,7 +53,7 @@ public abstract class Prisoner {
     }
 
     public int getLengthOfSentenceInYears() {
-        return lengthOfSentenceInYears;
+        return currentOutcome.getLengthOfSentenceInYears();
     }
 
     public void makeMove() {
@@ -73,30 +71,20 @@ public abstract class Prisoner {
         this.name = name;
     }
 
-    public void scorePoints(boolean atLeastOneDefected, boolean allDefected) {
+    public void scorePoints(int defected, int cooperated, int numberOfPrisoners) {
+        int currentPoints = 0;
         switch (currentMove) {
             case COOPERATE:
-                if (atLeastOneDefected) {
-                    currentOutcome = SUCKER_PAYOFF;
-                }
-                else {
-                    currentOutcome = REWARD;
-                }
+                currentPoints = cooperated * REWARD.getPoints();
+                currentPoints += cooperated * SUCKER_PAYOFF.getPoints();
                 break;
             case DEFECT:
-                if (allDefected) {
-                    currentOutcome = PUNISHMENT;
-                }
-                else {
-                    currentOutcome = TEMPTATION;
-                }
+                currentPoints = cooperated * TEMPTATION.getPoints();
+                currentPoints += cooperated * PUNISHMENT.getPoints();
                 break;
         }
-        setPoints();
-    }
-
-    private void setPoints() {
-        points += currentOutcome.getPoints();
-        lengthOfSentenceInYears += currentOutcome.getLengthOfSentenceInYears();
+        currentPoints /= numberOfPrisoners;
+        averagePoints += currentPoints;
+        currentOutcome = IteratedPrisonersDilemmaOutcome.getNearestRoundedOutcomeGivenPoints(Math.round(currentPoints));
     }
 }

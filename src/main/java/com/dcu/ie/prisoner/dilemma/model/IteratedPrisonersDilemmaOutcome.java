@@ -25,4 +25,17 @@ public enum IteratedPrisonersDilemmaOutcome {
     public int getPoints() {
         return points;
     }
+
+    public static IteratedPrisonersDilemmaOutcome getNearestRoundedOutcomeGivenPoints(int points) {
+        if (points > 3 && points <= 5) {
+            return TEMPTATION;
+        }
+        else if (points > 2 && points <= 3) {
+            return REWARD;
+        }
+        else if (points > 0 && points <= 2) {
+            return REWARD;
+        }
+        else return SUCKER_PAYOFF;
+    }
 }

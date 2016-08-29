@@ -17,9 +17,11 @@ public class IteratedPrisonersDilemmaGame {
     private List<Prisoner> prisoners;
     protected int numberOfRounds;
     private int currentRound;
+    private int numberOfPrisoners;
 
     public IteratedPrisonersDilemmaGame(List<Prisoner> prisoners, int numberOfRounds) {
         this.prisoners = prisoners;
+        numberOfPrisoners = prisoners.size();
         this.numberOfRounds = numberOfRounds;
         currentRound = 0;
     }
@@ -47,15 +49,13 @@ public class IteratedPrisonersDilemmaGame {
     }
 
     protected void scorePointsForAllPrisonersInTheRound() {
-        long numberOfDefects = getNumberOfDefectedPrisoners();
-        boolean atLeastOneDefectedPrisoner = numberOfDefects > 0;
-        boolean allDefectedPrisoner = numberOfDefects == prisoners.size();
+        int numberOfDefects = getNumberOfDefectedPrisoners();
 
-        prisoners.forEach(prisoner -> prisoner.scorePoints(atLeastOneDefectedPrisoner, allDefectedPrisoner));
+        prisoners.forEach(prisoner -> prisoner.scorePoints(numberOfDefects, numberOfPrisoners - numberOfDefects, numberOfPrisoners));
     }
 
-    private long getNumberOfDefectedPrisoners() {
-         return prisoners.stream()
+    private int getNumberOfDefectedPrisoners() {
+         return (int) prisoners.stream()
                 .map(prisoner -> prisoner.getCurrentMove())
                 .filter(move -> move.equals(DEFECT))
                 .count();

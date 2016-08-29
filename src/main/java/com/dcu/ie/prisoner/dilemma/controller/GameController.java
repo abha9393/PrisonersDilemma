@@ -147,7 +147,7 @@ public class GameController extends BorderPane {
         for (int j = 0; j < texts.size(); j++) {
             Prisoner prisoner = prisoners.get(j);
 
-            texts.get(j).setText("              Score: " + prisoner.getPoints());
+            texts.get(j).setText("              Score: " + prisoner.getAveragePoints());
 
             Button button = new Button(prisoner.getCurrentMove().getInitial());
 
