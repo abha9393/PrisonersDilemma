@@ -34,7 +34,7 @@ public enum IteratedPrisonersDilemmaOutcome {
             return REWARD;
         }
         else if (points > 0 && points <= 2) {
-            return REWARD;
+            return PUNISHMENT;
         }
         else return SUCKER_PAYOFF;
     }
